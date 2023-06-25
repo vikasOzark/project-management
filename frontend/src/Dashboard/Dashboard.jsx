@@ -1,14 +1,18 @@
-import {BiPlus } from "react-icons/bi"
 import { Modal } from "../components/Modal"
 import { useState } from "react"
 import { IssueCreateForm } from "../components/IssueCreateForm"
 import { button, label } from "../components/cssClasses"
-import {BiReceipt, BiListUl, BiWifi0} from "react-icons/bi"
+import {BiPlus, BiReceipt, BiListUl, BiWifi0, BiChevronDown, BiGroup, BiSolidUser, BiStoreAlt, BiCalendarEvent, BiChevronUp} from "react-icons/bi"
 import { CardBase } from "../components/CardBase"
+import { DropDown } from "../components/Dropdown"
 
 export const Dashboard = () => {
     const [issueModal, setIssueModal] = useState(false)
     const [issueDetail, setIssueDetail] = useState(false)
+    const [issueStatusDrop, setIssueStatusDrop] = useState(false)
+    const [assignPerson, setAssignPerson] = useState(false)
+
+
 
     
     return (
@@ -49,24 +53,46 @@ export const Dashboard = () => {
 
             {issueDetail&& 
                 <Modal close={() => setIssueDetail(false)} header={<><BiReceipt/> Detail</>}>
-                    <div className="flex gap-4 mb-4">
+                    <div className="flex justify-between gap-4 mb-4">
                         <div className="text-white w-20">
-                            <p className={`${label}`}>Author</p>
-                            <p className="text-gray-400">Vikas</p>
+                            <p className={`${label} flex items-center gap-2`}> <BiSolidUser /> Author</p>
+                            <p className="text-gray-400 "> Vikas</p>
                         </div>
                         <div className="text-white w-auto">
-                            <p className={`${label}`}>Creation Date</p>
-                            <p className="text-gray-400">12.13.2024</p>
+                            <p className={`${label} flex items-center gap-2`}><BiCalendarEvent /> Creation Date</p>
+                            <p className="text-gray-400 ">12.13.2024</p>
+                        </div>
+                        <div className="text-white w-auto">
+                            <p className={`${label} flex items-center gap-2`}> <BiStoreAlt /> Department</p>
+                            <p className="text-gray-400 ">Human Resource (HR)</p>
                         </div>
                     </div>
                     <div className="text-white w-auto mb-4">
                         <p className={`${label}`}>Deails Summary</p>
                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos, in? Possimus amet asperiores iusto laudantium adipisci impedit deleniti animi, aspernatur cumque inventore! Voluptatibus perspiciatis expedita culpa officiis voluptas ad quia?</p>
                     </div>
+                    
                     <div className="">
                         <p className={`${label}`}>Suportive Tags</p>
                         <div className="flex">
                             <div className="px-3 flex gap-2 bg-red-400 rounded ">hello </div>
+                        </div>
+                    </div>
+                    <div className="relative">
+                        <div className="flex justify-end gap-4">
+                            <div className="">
+                                <div onClick={() => setAssignPerson(pre => !pre)} className={`${button} bg-slate-500 text-white`}><BiGroup />  Assign to Person</div>
+                                <div className={`${!assignPerson? "hidden": ""} absolute z-50 w-auto mt-4`}>
+                                    <DropDown options={[{title: "hekk", click: () => {{console.log('clickewd...');}}}]} />
+                                </div>
+                            </div>
+
+                            <div className="">
+                                <div onClick={() => setIssueStatusDrop(pre => !pre )} className={`${button}`}>{issueStatusDrop? <BiChevronUp /> : <BiChevronDown />}  Change Status</div>
+                                <div className={`${!issueStatusDrop? "hidden": ""} absolute z-50 w-auto mt-4`}>
+                                    <DropDown options={[{title: "hekk", click: () => {{console.log('clickewd...');}}}]} />
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </Modal>
