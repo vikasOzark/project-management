@@ -1,3 +1,4 @@
+import { twMerge } from "tailwind-merge"
 import { CardBase } from "./CardBase"
 
 
@@ -7,18 +8,18 @@ import { CardBase } from "./CardBase"
  * click function will return the current click title as a return so accepts the in your functions.
  * @returns 
  */
-export const DropDown = ({options}) => {
+export const DropDown = ({options, children, className, cardBaseCss}) => {
     return (
         <>
-            <div className="bg-gray-500 p-2 rounded">
+            <div className={twMerge("bg-gray-500 p-2 rounded", className)}>
                 {options.map(item => (
                     <div onClick={item.click}>
-                        <CardBase>
+                        <CardBase className={cardBaseCss}>
                             {item.title}
                         </CardBase>
                     </div>
                 ))}
-                
+                {children}
             </div>
         </>
     )

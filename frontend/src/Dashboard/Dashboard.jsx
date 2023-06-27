@@ -43,7 +43,7 @@ export const Dashboard = () => {
             </section>
 
             {issueModal&& 
-                <Modal close={() => setIssueModal(false)} header={<><BiReceipt/> Create Issue</>}>
+                <Modal close={() => setIssueModal(false)} css={" w-full"} header={<><BiReceipt/> Create Issue</>}>
                     <IssueCreateForm />
                     <div className=" flex justify-end mt-2">
                         <div className={`${button}`}><BiPlus /> Create Here</div>
@@ -83,14 +83,14 @@ export const Dashboard = () => {
                             <div className="">
                                 <div onClick={() => setAssignPerson(pre => !pre)} className={`${button} bg-slate-500 text-white`}><BiGroup />  Assign to Person</div>
                                 <div className={`${!assignPerson? "hidden": ""} absolute z-50 w-auto mt-4`}>
-                                    <DropDown options={[{title: "hekk", click: () => {{console.log('clickewd...');}}}]} />
+                                    <DropDown cardBaseCss={`hover:bg-gray-600 cursor-pointer p-1 px-3 border rounded`} options={[{title: "hello world", click: () => {{console.log('clickewd...');}}}]} />
                                 </div>
                             </div>
 
                             <div className="">
                                 <div onClick={() => setIssueStatusDrop(pre => !pre )} className={`${button}`}>{issueStatusDrop? <BiChevronUp /> : <BiChevronDown />}  Change Status</div>
                                 <div className={`${!issueStatusDrop? "hidden": ""} absolute z-50 w-auto mt-4`}>
-                                    <DropDown options={[{title: "hekk", click: () => {{console.log('clickewd...');}}}]} />
+                                    <DropDown cardBaseCss={`hover:bg-gray-600 cursor-pointer p-1 px-3 border rounded`} className={``} options={[{title: "hello worl", click: () => {{console.log('clickewd...');}}}]} />
                                 </div>
                             </div>
                         </div>

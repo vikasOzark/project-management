@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import '../index.css'
-import { input, label } from './cssClasses'
+import { button, input, label } from './cssClasses'
 import { DropDown } from './Dropdown'
 
 export const IssueCreateForm = () => {
@@ -14,7 +14,7 @@ export const IssueCreateForm = () => {
                     <input type="text" name="name" id="name" className={`${input}`} placeholder="Issue title" required=""/>
                 </div>
                 <div>
-                    <label for="name" className={`${label}`}>Department</label>
+                    <label  className={`${label}`}>Department</label>
                     <select name="" className={`${input} w-44`} id="">
                         <option value="">hello</option>
                         <option value="">hello</option>
@@ -33,8 +33,13 @@ export const IssueCreateForm = () => {
                     <Multiselect />
 
                 </div>
-                <div className={`${tags? "hidden": ""} absolute z-50  w-full mt-4`}>
-                    <DropDown options={[{title: "hekk", click: () => {{console.log('clickewd...');}}}]} />
+                <div className={`${tags? "hidden": ""} absolute z-50  w-auto mt-4`}>
+                    <DropDown cardBaseCss={`hover:bg-gray-600 cursor-pointer p-1 px-3 border`} className={`w-fit`} options={[{title: "department issue", click: () => {{console.log('clickewd...');}}}]} >
+                        <div className=" flex w-full gap-2 input mt-2">
+                            <input type="text" name="name" id="name" className={`border-2 rounded px-3 bg-transparent `} placeholder="create tags.."/>
+                            <button className={`${button}`}>Create & add</button>
+                        </div>
+                    </DropDown>
                 </div>
             </div>
         </>

@@ -1,10 +1,12 @@
-export const Modal = ({children, header, close}) => {
+import { twMerge } from 'tailwind-merge'
+
+export const Modal = ({children, header, close, css}) => {
     return (
         <>
             <div id="defaultModal" tabindex="-1" aria-hidden="true" class=" overflow-y-auto overflow-x-hidden fixed top-0 flex right-0 left-0 z-50 justify-center items-center bg-gray-500 bg-opacity-30 w-full md:inset-0 h-modal md:h-full">
                 <div class="p-2 w-full max-w-2xl h-full md:h-auto  flex items-center justify-center">
                     {/* <!-- Modal content --> */}
-                    <div class="  p-4 bg-white rounded-lg shadow z-55 dark:bg-gray-800 sm:p-5">
+                    <div className={twMerge("p-4 bg-white rounded-lg shadow z-55 dark:bg-gray-800 sm:p-5", css)}>
                         {/* <!-- Modal header --> */}
                         <div class="flex justify-between items-center p-1 mb-4 rounded-t border-b sm:mb-5 dark:border-gray-600">
                             <h3 class="text-lg font-semibold text-gray-900 dark:text-white flex items-center gap-2">
